@@ -1,3 +1,17 @@
 {
-  "extends": ["next/core-web-vitals", "airbnb"]
+  "extends": ["next/core-web-vitals", "airbnb"],
+  "rules": {
+    "react/react-in-jsx-scope": "off",
+    "react/jsx-filename-extension": "off",
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "js": "never",
+        "jsx": "never",
+        "ts": "never",
+        "tsx": "never"
+      }
+    ]
+  }
 }
