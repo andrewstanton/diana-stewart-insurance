@@ -2,31 +2,20 @@ const colors = {
   white: "#fff",
   black: "#000",
 
-  // Blue
-  blue100: "#f4f7fa",
-  blue300: "#9de",
-  blue500: "#6ac",
-  blue700: "#269",
-  blue800: "#236598",
-
-  // Purple
-  purple500: "#75b",
+  // Green
+  green500: "#5BBF5B",
+  green700: "#208920",
 
   // Grey
-  grey100: "#eeeef6",
-  grey400: "#888",
-  grey700: "#444",
-  grey800: "#313131",
-  grey900: "#333",
+  gray300: "#f1f1f1",
+  gray500: "#858585",
+  gray700: "#090909",
 
   // Red
-  red500: "#c91429",
+  red500: "#f02e2e",
 
-  // Orange
-  orange500: "#FFAF5C",
-
-  facebook: "#3c5b9c",
-  youtube: "#c92b29",
+  // Yellow
+  yellow500: "#fceb26",
 }
 
 export default colors

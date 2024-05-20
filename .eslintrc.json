@@ -18,6 +18,9 @@
         "tsx": "never"
       }
     ],
-    "react/function-component-definition": ["off"]
+    "react/function-component-definition": ["off"],
+    "react/require-default-props": "off",
+    "import/no-extraneous-dependencies": "warn",
+    "no-shadow": "off"
   }
 }
