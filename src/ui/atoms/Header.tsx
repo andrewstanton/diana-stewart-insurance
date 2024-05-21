@@ -7,7 +7,7 @@ const basicStyles = css`
   color: ${colors.green500};
   margin: 0;
   padding: 0;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
 `
 
 export const H1 = styled.h1`

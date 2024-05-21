@@ -1,7 +1,10 @@
+"use client"
+
 import Link from "next/link"
 import { FC, ReactNode } from "react"
+import styled from "styled-components"
 
-import { Button, Section } from "@/ui/atoms"
+import { Button, Content, Section } from "@/ui/atoms"
 import { H1 } from "@/ui/atoms/Header"
 
 // @types
@@ -13,22 +16,26 @@ export interface HomeSectionProps {
   btnText?: string
 }
 
+const Wrapper = styled.div`
+  max-width: 1000px;
+`
+
 const HomeSection: FC<HomeSectionProps> = (props) => {
   const { title, children, btnText = "Contact Diana Today!" } = props
 
   return (
     <Section>
-      <div className="container mx-auto text-center">
+      <Wrapper className="container mx-auto text-center">
         <H1>{title}</H1>
 
-        {children}
+        <Content className="text-left">{children}</Content>
 
-        <div className="mt-10">
+        <div className="mt-6">
           <Link href="/contact">
             <Button color={ButtonColorEnum.DEFAULT}>{btnText}</Button>
           </Link>
         </div>
-      </div>
+      </Wrapper>
     </Section>
   )
 }

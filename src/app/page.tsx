@@ -1,5 +1,6 @@
 import { NextPage } from "next"
 
+import getHomeQuery from "@/queries/getHomeQuery"
 import getSEOQuery from "@/queries/getSEOQuery"
 import HomeSection from "@/ui/molecules/HomeSection"
 
@@ -11,10 +12,17 @@ export async function generateMetadata() {
   }
 }
 
-const HomePage: NextPage = () => (
-  <div>
-    <HomeSection title="Helping Toledo and Northwest Ohio Choose A Medicare Plan" />
-  </div>
-)
+const HomePage: NextPage = async () => {
+  const data = await getHomeQuery()
+  const { title, content } = data
+
+  return (
+    <div>
+      <HomeSection title={title}>
+        <div dangerouslySetInnerHTML={{ __html: content }} />
+      </HomeSection>
+    </div>
+  )
+}
 
 export default HomePage
