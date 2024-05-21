@@ -1,72 +1,116 @@
+"use client"
+
+import { faCopy } from "@fortawesome/free-regular-svg-icons"
 import Image from "next/image"
 import Link from "next/link"
 import { FC } from "react"
+import styled from "styled-components"
 
-import Button from "../atoms/Button"
+import colors from "@/config/colors"
+import { nav } from "@/config/meta"
+import formatPhone, { cleanPhone } from "@/lib/phone"
+import { Button, Icon } from "../atoms"
 
 import logo from "../../../public/images/logo.jpg"
 
-export interface INavItem {
-  label: string
-  url: string
+export interface HeaderProps {
+  phone: string
+  email: string
 }
 
-const nav: INavItem[] = [
-  {
-    label: "Home",
-    url: "/",
-  },
-  {
-    label: "About",
-    url: "/about",
-  },
-  {
-    label: "Health Insurance",
-    url: "/health-insurance",
-  },
-  {
-    label: "Testimonials",
-    url: "/testimonials",
-  },
-  {
-    label: "Contact",
-    url: "/contact",
-  },
-]
+const HeaderInfo = styled.div`
+  a {
+    color: ${colors.white};
+    text-decoration: none;
+    display: block;
 
-const Header: FC = () => (
-  <header className="w-full bg-white">
-    <div className="grid grid-cols-2 justify-center items-center">
-      <div className="bg-white">
-        <Image
-          src={logo}
-          width={251}
-          height={69}
-          alt="Diana Stewart Insurance Agent"
-        />
-      </div>
-      <div className="bg-black text-white p-16">
-        <Link href="/contact">
-          <Button>Get A Free Quote</Button>
-        </Link>
-      </div>
-    </div>
-    <nav className="bg-green-500 text-white">
-      <div className="container mx-auto">
-        <div className="flex justify-between items-center">
-          {nav.map((item) => (
-            <Link
-              href={item.url}
-              key={item.url}
-              className="px-4 py-4 font-bold text-center"
-            >
-              {item.label}
-            </Link>
-          ))}
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+`
+
+const IconContainer = styled.div`
+  svg,
+  i {
+    height: 50px;
+    width: 50px;
+    color: ${colors.green500};
+  }
+`
+
+const NavLink = styled(Link)`
+  &::after {
+    position: absolute;
+    transition: all 0.3s ease 0s;
+    bottom: 0px;
+    width: 0px;
+    height: 3px;
+    display: block;
+    left: 50%;
+    transform: translateX(-50%);
+    content: "";
+    background: ${colors.white};
+  }
+
+  &:hover {
+    &::after {
+      width: 100%;
+    }
+  }
+`
+
+const Header: FC<HeaderProps> = (props) => {
+  const { email, phone } = props
+
+  return (
+    <header className="w-full bg-white">
+      <div className="grid grid-cols-2 justify-center items-center">
+        <div className="bg-white px-14">
+          <Link href="/">
+            <Image
+              src={logo}
+              width={251}
+              height={69}
+              alt="Diana Stewart Insurance Agent"
+              className="transition-all hover:scale-110"
+            />
+          </Link>
+        </div>
+        <div className="bg-black text-white p-14">
+          <div className="grid grid-cols-[auto_1fr_auto] items-center">
+            <IconContainer>
+              <Icon icon={faCopy} />
+            </IconContainer>
+            <HeaderInfo className="ml-4 text-lg">
+              <a href={`mailto:${email}`}>{email}</a>
+              <a href={`tel:${cleanPhone(phone)}`}>{formatPhone(phone)}</a>
+            </HeaderInfo>
+            <div className="text-right">
+              <Link href="/contact">
+                <Button>Get A Free Quote</Button>
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
-    </nav>
-  </header>
-)
+      <nav className="bg-green-500 text-white">
+        <div className="container mx-auto px-4 md:px-10">
+          <div className="flex justify-between items-center">
+            {nav.map((item) => (
+              <NavLink
+                href={item.url}
+                key={item.url}
+                className="px-4 py-4 font-bold text-center relative"
+              >
+                {item.label}
+              </NavLink>
+            ))}
+          </div>
+        </div>
+      </nav>
+    </header>
+  )
+}
 
 export default Header

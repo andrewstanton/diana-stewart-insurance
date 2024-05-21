@@ -6,7 +6,7 @@ import footerLogo from "../../../public/images/footer-logo.jpg"
 const Footer: FC = () => (
   <footer className="w-full text-white">
     <div className="bg-gray-700 py-10">
-      <div className="container mx-auto">
+      <div className="container px-4 md:px-10 mx-auto">
         <div className="grid grid-cols-3 justify-center items-center">
           <div>
             <Image
@@ -22,7 +22,7 @@ const Footer: FC = () => (
       </div>
     </div>
     <div className="bg-black py-6 pb-10 text-white">
-      <div className="container mx-auto text-sm">
+      <div className="container px-4 md:px-10 mx-auto text-sm">
         &copy; {new Date().getFullYear()} Web Panda Designs, LLC
       </div>
     </div>

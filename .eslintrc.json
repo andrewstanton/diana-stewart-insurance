@@ -21,6 +21,7 @@
     "react/function-component-definition": ["off"],
     "react/require-default-props": "off",
     "import/no-extraneous-dependencies": "warn",
-    "no-shadow": "off"
+    "no-shadow": "off",
+    "@typescript-eslint/ban-ts-comment": "warn"
   }
 }

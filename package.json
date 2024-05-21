@@ -16,6 +16,11 @@
   "dependencies": {
     "@apollo/client": "^3.10.4",
     "@apollo/experimental-nextjs-app-support": "^0.10.1",
+    "@fortawesome/fontawesome-svg-core": "^6.5.2",
+    "@fortawesome/free-brands-svg-icons": "^6.5.2",
+    "@fortawesome/free-regular-svg-icons": "^6.5.2",
+    "@fortawesome/free-solid-svg-icons": "^6.5.2",
+    "@fortawesome/react-fontawesome": "^0.2.1",
     "classnames": "^2.5.1",
     "graphql": "^16.8.1",
     "lodash": "^4.17.21",
@@ -23,7 +28,8 @@
     "next-sitemap": "^4.2.3",
     "react": "^18",
     "react-dom": "^18",
-    "slugify": "^1.6.6"
+    "slugify": "^1.6.6",
+    "styled-components": "^6.1.11"
   },
   "devDependencies": {
     "@types/node": "^20",
