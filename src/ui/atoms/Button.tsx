@@ -1,8 +1,9 @@
 import classNames from "classnames"
 import { FC, ReactNode } from "react"
 
-enum ButtonColorEnum {
+export enum ButtonColorEnum {
   PRIMARY,
+  DEFAULT,
 }
 
 export interface ButtonProps {
@@ -17,6 +18,8 @@ const Button: FC<ButtonProps> = (props) => {
 
   const getColorClass = () => {
     switch (color) {
+      case ButtonColorEnum.DEFAULT:
+        return "bg-gray-500 text-white hover:bg-gray-400"
       default:
         return "bg-green-500 text-white hover:bg-green-700"
     }
