@@ -15,7 +15,14 @@ export async function generateMetadata() {
 const HomePage: NextPage = async () => {
   const data = await getHomeQuery()
   const { title, content, featuredImage, insurances, testimonials } = data
-  console.log({ testimonials })
+
+  const getClientTestimonies = (data: any) =>
+    data.map((testimony: any) => ({
+      id: testimony.id,
+      name: testimony.title,
+      testimony: testimony.content,
+      img: testimony.image,
+    }))
 
   return (
     <HomeTemplate
@@ -23,6 +30,7 @@ const HomePage: NextPage = async () => {
       content={content}
       bannerImg={featuredImage}
       insurances={insurances}
+      testimonials={getClientTestimonies(testimonials)}
     />
   )
 }

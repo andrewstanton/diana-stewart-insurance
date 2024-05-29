@@ -52,9 +52,9 @@ const HomeInsuranceCompanies: FC<HomeInsuranceCompaniesProps> = (props) => {
             <li key={insurance.id} className="h-full w-full pb-14">
               <div
                 className={cns(
-                  `h-[200px] w-[${slideWidth}px] flex justify-center items-center`,
+                  `h-[200px] w-[500px] flex justify-center items-center`,
                   {
-                    "text-black font-bold scale-125 ": slideIndex === idx,
+                    "text-black font-bold scale-125": slideIndex === idx,
                   }
                 )}
               >
