@@ -15,10 +15,15 @@ export async function generateMetadata() {
 const HomePage: NextPage = async () => {
   const data = await getHomeQuery()
   const { title, content, featuredImage, insurances, testimonials } = data
-  console.log({ insurances }, { testimonials })
+  console.log({ testimonials })
 
   return (
-    <HomeTemplate title={title} content={content} bannerImg={featuredImage} />
+    <HomeTemplate
+      title={title}
+      content={content}
+      bannerImg={featuredImage}
+      insurances={insurances}
+    />
   )
 }
 

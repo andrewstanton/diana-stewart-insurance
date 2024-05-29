@@ -1,17 +1,25 @@
+"use client"
+
 import { FC, ReactNode } from "react"
+import styled from "styled-components"
 
 import Wrapper from "./Wrapper"
 
 export interface SectionProps {
   children?: ReactNode
+  bgColor?: string
 }
 
+const SectionStyle = styled.section<SectionProps>`
+  ${({ bgColor }) => (bgColor ? `background-color: ${bgColor};` : "white;")}
+`
+
 const Section: FC<SectionProps> = (props) => {
-  const { children } = props
+  const { children, bgColor } = props
   return (
-    <section className="bg-white p-14">
+    <SectionStyle className="p-14" bgColor={bgColor}>
       <Wrapper>{children}</Wrapper>
-    </section>
+    </SectionStyle>
   )
 }
 
