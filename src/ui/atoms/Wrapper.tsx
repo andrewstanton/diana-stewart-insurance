@@ -1,5 +1,4 @@
 import { FC, ReactNode } from "react"
-import cns from "classnames"
 
 export interface WrapperProps {
   width?: number
@@ -11,10 +10,11 @@ const Wrapper: FC<WrapperProps> = (props) => {
   const { width, maxWidth, children } = props
   return (
     <div
-      className={cns("mx-auto h-full", {
-        maxWidth: `max-width: ${maxWidth || 1480}px`,
-        width: `width: ${width}px`,
-      })}
+      className="mx-auto h-full"
+      style={{
+        width: `${width || "95"}%`,
+        maxWidth: `${maxWidth || 1480}px`,
+      }}
     >
       {children}
     </div>

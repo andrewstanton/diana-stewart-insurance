@@ -1,6 +1,7 @@
 import React from "react"
+import Link from "next/link"
 
-import { Hero, Wrapper } from "../atoms"
+import { Hero, Wrapper, Button } from "../atoms"
 
 export interface HeroProps {
   img: string
@@ -13,13 +14,16 @@ const Banner: React.FC<HeroProps> = (props: HeroProps) => {
   const { img, heading, subHeading, text } = props
 
   return (
-    <section className="h-[300px]">
+    <section className="h-[400px]">
       <Hero img={img}>
-        <Wrapper maxWidth={1440}>
-          <div className="h-full py-10">
-            <h1 className="text-3xl">{heading}</h1>
-            <h2 className="text-4xl font-bold">{subHeading}</h2>
-            <p className="text-2xl">{text}</p>
+        <Wrapper maxWidth={1000}>
+          <div className="h-full max-w-[400px] py-8 flex flex-col justify-center gap-6 text-black">
+            <h1 className="text-3xl m-0 leading-8">{heading}</h1>
+            <h2 className="text-4xl font-bold m-0 leading-3">{subHeading}</h2>
+            <p className="text-2xl p-0 m-0">{text}</p>
+            <Link href="/contact">
+              <Button>Contact Diana Now</Button>
+            </Link>
           </div>
         </Wrapper>
       </Hero>
