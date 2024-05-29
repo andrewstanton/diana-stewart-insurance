@@ -17,7 +17,7 @@ const SectionStyle = styled.section<SectionProps>`
 const Section: FC<SectionProps> = (props) => {
   const { children, bgColor } = props
   return (
-    <SectionStyle className="p-14" bgColor={bgColor}>
+    <SectionStyle className="py-14" bgColor={bgColor}>
       <Wrapper>{children}</Wrapper>
     </SectionStyle>
   )
