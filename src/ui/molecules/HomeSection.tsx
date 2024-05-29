@@ -22,7 +22,7 @@ const HomeSection: FC<HomeSectionProps> = (props) => {
     <Section>
       <H1>{title}</H1>
       <Content>{children}</Content>
-      <div className="mt-6">
+      <div className="mt-6 text-center">
         <Link href="/contact">
           <Button color={ButtonColorEnum.DEFAULT}>{btnText}</Button>
         </Link>

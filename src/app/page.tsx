@@ -14,9 +14,12 @@ export async function generateMetadata() {
 
 const HomePage: NextPage = async () => {
   const data = await getHomeQuery()
-  const { title, content } = data
+  const { title, content, featuredImage, insurances, testimonials } = data
+  console.log({ insurances }, { testimonials })
 
-  return <HomeTemplate title={title} content={content} />
+  return (
+    <HomeTemplate title={title} content={content} bannerImg={featuredImage} />
+  )
 }
 
 export default HomePage

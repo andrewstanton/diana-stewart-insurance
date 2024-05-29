@@ -6,14 +6,16 @@ import { HomeSection, Banner } from "../molecules"
 export interface HomeTemplateProps {
   title: string
   content: ReactNode
+  bannerImg: string
 }
 
 const HomeTemplate: FC<HomeTemplateProps> = (props) => {
-  const { title, content } = props
+  const { title, content, bannerImg } = props
+
   return (
     <MainLayout>
       <Banner
-        img="https://source.unsplash.com/random/?niagra"
+        img={bannerImg}
         heading="Choosing A Medicare Plan Feels Like You're At"
         subHeading="Niagra Falls"
         text="I Can Keep You From Drowning!"

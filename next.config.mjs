@@ -4,6 +4,7 @@ const nextConfig = {
     styledComponents: true,
   },
   images: {
+    domains: ['admin.dianastewartinsurance.com'],
     remotePatterns: [
       {
         protocol: "https",
