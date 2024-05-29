@@ -13,7 +13,7 @@ const Wrapper: FC<WrapperProps> = (props) => {
       className="mx-auto h-full"
       style={{
         width: `${width || "95"}%`,
-        maxWidth: `${maxWidth || 1200}px`,
+        maxWidth: `${maxWidth || 1500}px`,
       }}
     >
       {children}

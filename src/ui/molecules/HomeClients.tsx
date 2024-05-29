@@ -19,7 +19,7 @@ const HomeClients: FC<HomeClientsProps> = (props) => {
       <div className="text-center">
         <H2>{title}</H2>
       </div>
-      <ul className="grid grid-cols-3 gap-8 place-items-center">
+      <ul className="grid grid-cols-3 gap-8 place-items-start">
         {testimonies.map((testimony) => (
           <Testimony name={testimony.name} testimony={testimony.testimony} />
         ))}
