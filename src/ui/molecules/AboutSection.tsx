@@ -2,16 +2,19 @@ import React, { ReactNode, FC } from "react"
 import Image from "next/image"
 
 import { Section, Content } from "../atoms"
+import ContactForm from "./ContactForm"
 import { H2 } from "../atoms/Header"
 
 export interface AboutSectionProps {
   title: string
   children: ReactNode
   img: string
+  formTitle: string
+  formDescription: string
 }
 
 const AboutSection: FC<AboutSectionProps> = (props) => {
-  const { title, children, img } = props
+  const { title, children, img, formTitle, formDescription } = props
   return (
     <Section>
       <div className="grid grid-cols-[2fr_1fr] gap-20">
@@ -29,6 +32,7 @@ const AboutSection: FC<AboutSectionProps> = (props) => {
           />
         </div>
       </div>
+      <ContactForm title={formTitle} description={formDescription} />
     </Section>
   )
 }

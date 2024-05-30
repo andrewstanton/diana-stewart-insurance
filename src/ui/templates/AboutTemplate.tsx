@@ -7,14 +7,21 @@ export interface AboutTemplateProps {
   title: string
   content: ReactNode
   img: string
+  formTitle: string
+  formDescription: string
 }
 
 const AboutTemplate: FC<AboutTemplateProps> = (props) => {
-  const { title, content, img } = props
+  const { title, content, img, formTitle, formDescription } = props
 
   return (
     <MainLayout>
-      <AboutSection title={title} img={img}>
+      <AboutSection
+        title={title}
+        img={img}
+        formTitle={formTitle}
+        formDescription={formDescription}
+      >
         {content}
       </AboutSection>
     </MainLayout>

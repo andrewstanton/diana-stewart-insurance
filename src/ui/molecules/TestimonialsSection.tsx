@@ -25,7 +25,11 @@ const TestimonialsSection: FC<TestimonialsSectionProps> = (props) => {
       <Content>{children}</Content>
       <ul className="grid grid-cols-2 gap-12 place-items-start mt-20">
         {testimonies.map((testimony) => (
-          <Testimony name={testimony.name} testimony={testimony.testimony} />
+          <Testimony
+            key={testimony.name}
+            name={testimony.name}
+            testimony={testimony.testimony}
+          />
         ))}
       </ul>
     </Section>
