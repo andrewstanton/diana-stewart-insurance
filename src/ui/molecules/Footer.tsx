@@ -1,6 +1,11 @@
 import Image from "next/image"
+import Link from "next/link"
 import { FC } from "react"
 
+import { faFacebookSquare } from "@fortawesome/free-brands-svg-icons"
+
+import { nav } from "@/config/meta"
+import { Icon } from "../atoms"
 import footerLogo from "../../../public/images/footer-logo.jpg"
 
 const Footer: FC = () => (
@@ -16,8 +21,42 @@ const Footer: FC = () => (
               alt="Diana Stewart Insurance Agent"
             />
           </div>
-          <div>LINKS</div>
-          <div>Contact Info</div>
+          <div>
+            <h4 className="m-0">LINKS</h4>
+            <div className="bg-green-500 h-1 w-8 mt-2 mb-4" />
+            <ul>
+              {nav.map((link) => (
+                <li className="mb-2" key={`footer-${link.label}`}>
+                  <Link href={link.url}>{link.label}</Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <h4 className="m-0">CONTACT INFO</h4>
+            <div className="bg-green-500 h-1 w-8 mt-2 mb-4" />
+            <div className="mb-2">
+              <a href="mailto:info@dianastewartinsurance.com">
+                info@dianastewartinsurance.com
+              </a>
+            </div>
+            <div>
+              <a href="tel:4198704185">(419) 870-4185</a>
+            </div>
+            <h4 className="m-0 mt-8">SOCIAL MEDIA</h4>
+            <div className="bg-green-500 h-1 w-8 mt-2 mb-4" />
+            <div>
+              <a
+                href="/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-4xl text-gray-400"
+                aria-label="Diana Stewart Insurance Agent on Facebook"
+              >
+                <Icon icon={faFacebookSquare} />
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </div>

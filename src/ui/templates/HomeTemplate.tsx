@@ -25,12 +25,7 @@ const HomeTemplate: FC<HomeTemplateProps> = (props) => {
 
   return (
     <MainLayout>
-      <Banner
-        img={bannerImg}
-        heading="Choosing A Medicare Plan Feels Like You're At"
-        subHeading="Niagra Falls"
-        text="I Can Keep You From Drowning!"
-      />
+      <Banner img={bannerImg} />
       <HomeSection title={title}>{content}</HomeSection>
       <HomeInsuranceCompanies insurances={insurances} />
       <HomeClients title="What My Clients Say." testimonies={testimonials} />
