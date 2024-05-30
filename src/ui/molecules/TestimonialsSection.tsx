@@ -29,6 +29,7 @@ const TestimonialsSection: FC<TestimonialsSectionProps> = (props) => {
             key={testimony.name}
             name={testimony.name}
             testimony={testimony.testimony}
+            img={testimony.img}
           />
         ))}
       </ul>

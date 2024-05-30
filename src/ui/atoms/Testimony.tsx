@@ -5,14 +5,15 @@ import FillImage from "./FillImage"
 export interface IClientTestimony {
   name: string
   testimony: string
+  img: string
 }
 
 const Testimony: FC<IClientTestimony> = (props) => {
-  const { name, testimony } = props
+  const { name, testimony, img } = props
   return (
     <div className="flex flex-col items-center justify-center text-center gap-8">
       <div className="h-[100px] w-[100px]">
-        <FillImage img="/images/profile-placeholder.jpg" roundedImg />
+        <FillImage img={img} roundedImg />
       </div>
       <div className="relative h-full mt-4 border-gray-400 border-solid border-t border-l border-r border-b py-10 px-8">
         <div className="absolute top-0 right-1/2 translate-x-1/2 w-10 h-10 -mt-5 rotate-45 border-t border-l border-gray-400 bg-white" />
