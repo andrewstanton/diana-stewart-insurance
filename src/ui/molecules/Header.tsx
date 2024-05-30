@@ -76,7 +76,7 @@ const Header: FC<HeaderProps> = (props) => {
               width={251}
               height={69}
               alt="Diana Stewart Insurance Agent"
-              className="transition-all hover:scale-110"
+              className="transition-all hover:scale-110 select-none"
             />
           </Link>
         </div>

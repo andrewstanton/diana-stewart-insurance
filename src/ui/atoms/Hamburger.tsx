@@ -1,5 +1,7 @@
 import cns from "classnames"
-import "./Hamburger.css"
+import { faBars } from "@fortawesome/free-solid-svg-icons"
+
+import Icon from "./Icon"
 
 export interface HamburgerProps {
   on?: boolean
@@ -25,11 +27,11 @@ const Hamburger: React.FC<HamburgerProps> = (props: HamburgerProps) => {
       onClick={onClick}
       onKeyPress={handleKeyPress}
       className={cns(
-        "hamburger absolute flex justify-center items-center cursor-pointer text-red-500 text-2xl lg:hidden",
+        "hamburger absolute right-8 top-1/2 transform -translate-y-1/2 flex justify-center items-center cursor-pointer text-green-500 text-3xl lg:hidden",
         { "bg-black": on }
       )}
     >
-      <span aria-hidden="true" />
+      <Icon icon={faBars} />
     </div>
   )
 }
