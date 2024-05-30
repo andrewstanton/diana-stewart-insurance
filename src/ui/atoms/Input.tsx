@@ -16,12 +16,12 @@ const Input = React.forwardRef<
 >((props, ref) => {
   const { id, name, placeholder, type, required, ...other } = props
 
-  const styles = "outline-none border border-gray-400 w-full px-4 py-8"
+  const styles = "outline-none border border-gray-200 w-full px-4 py-8"
 
   /* eslint-disable react/jsx-props-no-spreading */
   return type === "textarea" ? (
     <textarea
-      className={cns("resize-none h-24 mb-8 text-lg", styles)}
+      className={cns("resize-none h-40 mb-8 text-lg", styles)}
       id={id}
       placeholder={placeholder}
       name={name}

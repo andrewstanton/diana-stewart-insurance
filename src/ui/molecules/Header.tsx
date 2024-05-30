@@ -9,13 +9,15 @@ import styled from "styled-components"
 import colors from "@/config/colors"
 import { nav } from "@/config/meta"
 import formatPhone, { cleanPhone } from "@/lib/phone"
-import { Button, Icon } from "../atoms"
+import { Button, Icon, Hamburger } from "../atoms"
 
 import logo from "../../../public/images/logo.jpg"
 
 export interface HeaderProps {
   phone: string
   email: string
+  isOpen?: boolean
+  onHamburgerClick?: () => void
 }
 
 const HeaderInfo = styled.div`
@@ -61,10 +63,11 @@ const NavLink = styled(Link)`
 `
 
 const Header: FC<HeaderProps> = (props) => {
-  const { email, phone } = props
+  const { email, phone, isOpen, onHamburgerClick } = props
 
   return (
-    <header className="w-full bg-white">
+    <header className="w-full bg-white py-6 lg:py-0">
+      <Hamburger on={isOpen} onClick={onHamburgerClick} />
       <div className="grid grid-cols-2 justify-center items-center">
         <div className="bg-white px-14">
           <Link href="/">
@@ -77,7 +80,7 @@ const Header: FC<HeaderProps> = (props) => {
             />
           </Link>
         </div>
-        <div className="bg-black text-white p-14">
+        <div className="bg-black text-white p-14 hidden lg:block">
           <div className="grid grid-cols-[auto_1fr_auto] items-center">
             <IconContainer>
               <Icon icon={faCopy} />
@@ -94,7 +97,7 @@ const Header: FC<HeaderProps> = (props) => {
           </div>
         </div>
       </div>
-      <nav className="bg-green-500 text-white">
+      <nav className="bg-green-500 text-white hidden lg:block">
         <div className="container mx-auto px-4 md:px-10">
           <div className="flex justify-between items-center">
             {nav.map((item) => (

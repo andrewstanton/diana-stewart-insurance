@@ -17,7 +17,7 @@ const AboutSection: FC<AboutSectionProps> = (props) => {
   const { title, children, img, formTitle, formDescription } = props
   return (
     <Section>
-      <div className="grid grid-cols-[2fr_1fr] gap-20">
+      <div className="grid md:grid-cols-[2fr_1fr] gap-4 md:gap-20">
         <div>
           <H2>{title}</H2>
           <Content>{children}</Content>

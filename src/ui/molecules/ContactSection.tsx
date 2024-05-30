@@ -17,7 +17,7 @@ const ContactSection: FC<ContactSectionProps> = (props) => {
   const anchorStyles = "text-green-500 font-bold hover:underline"
   return (
     <Section>
-      <div className="grid grid-cols-2">
+      <div className="grid lg:grid-cols-2">
         <div>
           <div className="text-center">
             <H2>{title}</H2>

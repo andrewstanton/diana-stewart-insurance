@@ -1,6 +1,8 @@
 import { ReactNode } from "react"
 
-import { Header, Footer } from "../molecules"
+import { nav } from "@/config/meta"
+import { Footer } from "../molecules"
+import MainHeader from "./MainHeader"
 
 export interface MainLayoutProps {
   children?: ReactNode
@@ -11,7 +13,7 @@ const MainLayout: React.FC<MainLayoutProps> = (props: MainLayoutProps) => {
 
   return (
     <div>
-      <Header phone="419-290-0145" email="demo@gmail.com" />
+      <MainHeader items={nav} />
       <main>{children}</main>
       <Footer />
     </div>

@@ -3,6 +3,7 @@
 import React, { FC, useState, useEffect } from "react"
 import cns from "classnames"
 
+import useWindowSize from "@/lib/window"
 import { Wrapper, FillImage } from "../atoms"
 import { H2 } from "../atoms/Header"
 
@@ -20,11 +21,14 @@ const HomeInsuranceCompanies: FC<HomeInsuranceCompaniesProps> = (props) => {
   const { insurances } = props
   const [slideIndex, setIndex] = useState(0)
   const delay = 3000
-  const length = insurances.length - 1
-  const slideWidth = 33.33
+  const size = useWindowSize()
+  const length = insurances.length - 2
+  const slideWidth = size.width < 1280 ? 100 : 33.33
   const slideTransform = {
-    transform: `translateX(-${slideIndex * slideWidth}%) scale(1)`,
+    transform: `translateX(-${slideIndex * slideWidth}%)`,
   }
+
+  console.log(size)
 
   // Automation
   useEffect(() => {
@@ -48,7 +52,7 @@ const HomeInsuranceCompanies: FC<HomeInsuranceCompaniesProps> = (props) => {
           style={slideTransform}
         >
           {insurances.map((insurance, idx) => (
-            <li key={insurance.id} className="flex-none w-1/3">
+            <li key={insurance.id} className="flex-none w-full xl:w-1/3">
               <div
                 className={cns(
                   `h-[200px] w-full flex justify-center items-center transition-all duration-500`,

@@ -2,6 +2,8 @@ import { NextPage } from "next"
 
 import getHomeQuery from "@/queries/getHomeQuery"
 import getSEOQuery from "@/queries/getSEOQuery"
+import getClientTestimonies from "@/lib/common"
+
 import { HomeTemplate } from "@/ui/templates"
 
 export async function generateMetadata() {
@@ -15,14 +17,6 @@ export async function generateMetadata() {
 const HomePage: NextPage = async () => {
   const data = await getHomeQuery()
   const { title, content, featuredImage, insurances, testimonials } = data
-
-  const getClientTestimonies = (data: any) =>
-    data.map((testimony: any) => ({
-      id: testimony.id,
-      name: testimony.title,
-      testimony: testimony.content,
-      img: testimony.image,
-    }))
 
   return (
     <HomeTemplate
