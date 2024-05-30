@@ -12,7 +12,7 @@ const Hero: FC<HeroProps> = (props) => {
     <div className="relative h-full">
       <div className="absolute top-0 left-0 w-full h-full">
         <Image
-          className="absolute object-cover"
+          className="absolute object-cover object-top"
           src={img}
           alt="Diana Stewart Insurance Agent"
           fill

@@ -13,8 +13,8 @@ const Banner: React.FC<HeroProps> = (props: HeroProps) => {
   return (
     <section className="h-[400px]">
       <Hero img={img}>
-        <Wrapper maxWidth={1000}>
-          <div className="h-full max-w-[450px] py-8 flex flex-col justify-center gap-8 text-black">
+        <Wrapper maxWidth={1300}>
+          <div className="h-full max-w-[450px] py-8 flex flex-col justify-center gap-6 text-black">
             <h1 className="text-4xl m-0 leading-10">
               Choosing A Medicare Plan Feels Like You&apos;re At
             </h1>

@@ -19,8 +19,10 @@ const HomeSection: FC<HomeSectionProps> = (props) => {
   const { title, children, btnText = "Contact Diana Today!" } = props
 
   return (
-    <Section>
-      <H1>{title}</H1>
+    <Section wrapperMaxWidth={1000}>
+      <div className="text-center">
+        <H1>{title}</H1>
+      </div>
       <Content>{children}</Content>
       <div className="mt-6 text-center">
         <Link href="/contact">

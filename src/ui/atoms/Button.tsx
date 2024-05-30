@@ -21,7 +21,7 @@ const Button: FC<ButtonProps> = (props) => {
   const getColorClass = () => {
     switch (color) {
       case ButtonColorEnum.DEFAULT:
-        return "rounded-full bg-gray-500 text-white hover:bg-gray-400"
+        return "!rounded-full bg-gray-600 text-white hover:bg-gray-400"
       default:
         return "bg-green-500 text-white hover:bg-green-700"
     }

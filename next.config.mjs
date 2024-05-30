@@ -8,7 +8,7 @@ const nextConfig = {
       {
         protocol: "https",
         hostname: "admin.dianastewartinsurance.com",
-        port: '',
+        port: "",
         pathname: "/**",
       },
     ],

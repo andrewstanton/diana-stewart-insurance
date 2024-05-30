@@ -8,6 +8,7 @@ import Wrapper from "./Wrapper"
 export interface SectionProps {
   children?: ReactNode
   bgColor?: string
+  wrapperMaxWidth?: number
 }
 
 const SectionStyle = styled.section<SectionProps>`
@@ -15,10 +16,10 @@ const SectionStyle = styled.section<SectionProps>`
 `
 
 const Section: FC<SectionProps> = (props) => {
-  const { children, bgColor } = props
+  const { children, bgColor, wrapperMaxWidth } = props
   return (
     <SectionStyle className="py-14" bgColor={bgColor}>
-      <Wrapper>{children}</Wrapper>
+      <Wrapper maxWidth={wrapperMaxWidth}>{children}</Wrapper>
     </SectionStyle>
   )
 }
