@@ -21,10 +21,9 @@ const HomeInsuranceCompanies: FC<HomeInsuranceCompaniesProps> = (props) => {
   const [slideIndex, setIndex] = useState(0)
   const delay = 3000
   const length = insurances.length - 1
-  const slideWidth = 500
-
+  const slideWidth = 33.33
   const slideTransform = {
-    transform: `translateX(-${slideIndex * slideWidth}px)`,
+    transform: `translateX(-${slideIndex * slideWidth}%) scale(1)`,
   }
 
   // Automation
@@ -37,9 +36,9 @@ const HomeInsuranceCompanies: FC<HomeInsuranceCompaniesProps> = (props) => {
   }, [delay, length])
 
   return (
-    <section className="bg-gray-300">
+    <section className="bg-gray-300 pb-14">
       <Wrapper>
-        <div className="pt-14">
+        <div className="pt-14 text-center">
           <H2>Insurance Companies</H2>
         </div>
       </Wrapper>
@@ -49,19 +48,25 @@ const HomeInsuranceCompanies: FC<HomeInsuranceCompaniesProps> = (props) => {
           style={slideTransform}
         >
           {insurances.map((insurance, idx) => (
-            <li key={insurance.id} className="h-full w-full pb-14">
+            <li key={insurance.id} className="flex-none w-1/3">
               <div
                 className={cns(
-                  `h-[200px] w-[500px] flex justify-center items-center`,
+                  `h-[200px] w-full flex justify-center items-center transition-all duration-500`,
                   {
-                    "text-black font-bold scale-125": slideIndex === idx,
+                    "text-black font-black scale-125": slideIndex + 1 === idx,
                   }
                 )}
               >
                 {insurance.image ? (
                   <FillImage img={insurance.image} objectContain />
                 ) : (
-                  <h4 className="m-0">{insurance.title}</h4>
+                  <h4
+                    className={cns("m-0", {
+                      "font-bold": slideIndex + 1 === idx,
+                    })}
+                  >
+                    {insurance.title}
+                  </h4>
                 )}
               </div>
             </li>
