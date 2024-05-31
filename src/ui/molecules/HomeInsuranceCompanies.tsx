@@ -28,8 +28,6 @@ const HomeInsuranceCompanies: FC<HomeInsuranceCompaniesProps> = (props) => {
     transform: `translateX(-${slideIndex * slideWidth}%)`,
   }
 
-  console.log(size)
-
   // Automation
   useEffect(() => {
     const interval = setInterval(() => {

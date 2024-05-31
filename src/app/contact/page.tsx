@@ -2,6 +2,7 @@ import { NextPage } from "next"
 
 import getSEOQuery from "@/queries/getSEOQuery"
 import getContactQuery from "@/queries/getContactQuery"
+import getFormQuery from "@/queries/getFormQuery"
 
 import { ContactTemplate } from "@/ui/templates"
 
@@ -15,7 +16,13 @@ export async function generateMetadata() {
 
 const ContactPage: NextPage = async () => {
   const data = await getContactQuery()
+  const formData = await getFormQuery("1")
+
   const { title, content } = data
+  const { title: formTitle, fields } = formData
+
+  console.log(formTitle, fields)
+
   return (
     <ContactTemplate
       title={title}

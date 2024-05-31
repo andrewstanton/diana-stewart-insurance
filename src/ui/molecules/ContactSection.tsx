@@ -1,7 +1,7 @@
 import React, { ReactNode, FC } from "react"
 
 import { Section, Content } from "../atoms"
-import ContactForm from "./ContactForm"
+// import { GravityForm } from "../organisms"
 import { H2 } from "../atoms/Header"
 
 export interface ContactSectionProps {
@@ -13,6 +13,7 @@ export interface ContactSectionProps {
 
 const ContactSection: FC<ContactSectionProps> = (props) => {
   const { title, content, formTitle, formDescription } = props
+  console.log(formTitle, formDescription)
 
   const anchorStyles = "text-green-500 font-bold hover:underline"
   return (
@@ -39,7 +40,16 @@ const ContactSection: FC<ContactSectionProps> = (props) => {
             </a>
           </p>
         </div>
-        <ContactForm title={formTitle} description={formDescription} />
+        {/* <ContactForm title={formTitle} description={formDescription} /> */}
+        {/* <GravityForm
+          fields={formFields}
+          defaultValues={defaultValues}
+          onSubmit={onSubmit}
+          btnText="Send Message"
+          loadingText="Sending..."
+          loading={loading}
+          error={error}
+        /> */}
       </div>
     </Section>
   )
