@@ -1,11 +1,12 @@
 "use client"
 
-import React, { useState } from "react"
+import React, { ReactNode, useState } from "react"
 import styled from "styled-components"
 import { useForm } from "react-hook-form"
 // import ReCAPTCHA from "react-google-recaptcha"
 
-import { Button, Input, Alert, Form } from "../atoms"
+import { Button, Input, Alert, Form, Content } from "../atoms"
+import { H2 } from "../atoms/Header"
 
 import {
   IFormField,
@@ -25,6 +26,9 @@ export interface GravityFormProps {
   loadingText?: string
   loading: boolean
   error?: string
+  success?: boolean
+  title: string
+  content: ReactNode
 }
 
 const ButtonContainer = styled.div`
@@ -32,6 +36,8 @@ const ButtonContainer = styled.div`
 `
 
 const ReCaptchaContainer = styled.div``
+
+const ErrorContainer = styled.div``
 
 interface IRenderConfig {
   errors: any
@@ -62,7 +68,7 @@ const renderField = (field: IFormField, config: IRenderConfig) => {
           key={field.id}
           id={name}
           label={field.label}
-          placeholder={field.placeholder}
+          placeholder="Name"
           required={field.isRequired}
           fullWidth
           error={!!errors[name]}
@@ -77,7 +83,7 @@ const renderField = (field: IFormField, config: IRenderConfig) => {
           id={name}
           label={field.label}
           type="email"
-          placeholder={field.placeholder}
+          placeholder="Email"
           required={field.isRequired}
           fullWidth
           error={!!errors[name]}
@@ -95,7 +101,7 @@ const renderField = (field: IFormField, config: IRenderConfig) => {
           type="textarea"
           key={field.id}
           id={name}
-          placeholder={field.placeholder}
+          placeholder="Type your question"
           label={field.label}
           fullWidth
           required={field.isRequired}
@@ -112,12 +118,6 @@ const renderField = (field: IFormField, config: IRenderConfig) => {
       )
   }
 }
-
-const ErrorContainer = styled.div``
-
-const RequiredDescription = styled.div`
-  margin-bottom: 1rem;
-`
 
 interface FormData {
   [key: string]: any
@@ -145,6 +145,9 @@ const GravityForm: React.FC<GravityFormProps> = (props) => {
     btnText,
     error,
     loadingText,
+    success,
+    title,
+    content,
   } = props
   // const captchaRef = useRef<ReCAPTCHA>(null)
   const [capError, setCapError] = useState<string | null>(null)
@@ -174,36 +177,42 @@ const GravityForm: React.FC<GravityFormProps> = (props) => {
   })
 
   return (
-    <Form onSubmit={handleSubmit(onHandleSubmit)}>
-      <RequiredDescription>
-        All required fields, marked with an asterisk (*), must be completed to
-        submit
-      </RequiredDescription>
+    <div className="flex items-center justify-center">
+      {success ? (
+        <Alert>
+          Thank you! We have received your message and will be in touch shortly.
+        </Alert>
+      ) : (
+        <Form onSubmit={handleSubmit(onHandleSubmit)}>
+          <H2>{title}</H2>
+          <Content>{content}</Content>
 
-      <div className="grid gap-6">
-        {fields.map((field) => renderField(field, { register, errors }))}
-      </div>
+          <div className="grid gap-6">
+            {fields.map((field) => renderField(field, { register, errors }))}
+          </div>
 
-      <ReCaptchaContainer>
-        {/* <ReCAPTCHA
-          sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_PUBLIC ?? ""}
-          ref={captchaRef}
-          grecaptcha={instance}
-        /> */}
-      </ReCaptchaContainer>
+          <ReCaptchaContainer>
+            {/* <ReCAPTCHA
+    sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_PUBLIC ?? ""}
+    ref={captchaRef}
+    grecaptcha={instance}
+  /> */}
+          </ReCaptchaContainer>
 
-      {(error || capError) && (
-        <ErrorContainer>
-          <Alert color="red">{error || capError}</Alert>
-        </ErrorContainer>
+          {(error || capError) && (
+            <ErrorContainer>
+              <Alert color="red">{error || capError}</Alert>
+            </ErrorContainer>
+          )}
+
+          <ButtonContainer>
+            <Button type="submit" disabled={loading} fullWidth>
+              {loading ? loadingText : btnText}
+            </Button>
+          </ButtonContainer>
+        </Form>
       )}
-
-      <ButtonContainer>
-        <Button type="submit" disabled={loading} fullWidth>
-          {loading ? loadingText : btnText}
-        </Button>
-      </ButtonContainer>
-    </Form>
+    </div>
   )
 }
 

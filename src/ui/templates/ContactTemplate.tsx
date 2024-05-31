@@ -4,7 +4,8 @@ import React, { FC, ReactNode } from "react"
 
 import { MainLayout, GravityForm } from "../organisms"
 import { ContactSection } from "../molecules"
-import { useGravityForm } from "../../../hooks"
+import { Section } from "../atoms"
+import useGravityForm from "../../../hooks/useGravityForm"
 
 // @types
 import { IFormField } from "../../../interfaces/gravity"
@@ -17,10 +18,13 @@ export interface FormProps {
 export interface ContactTemplateProps extends FormProps {
   title: string
   content: ReactNode
+  formTitle: string
+  formContent: string
 }
 
 const ContactTemplate: FC<ContactTemplateProps> = (props) => {
-  const { title, content, fields, defaultValues } = props
+  const { title, content, fields, defaultValues, formTitle, formContent } =
+    props
 
   const [state, handleSubmit] = useGravityForm({
     id: "1",
@@ -28,26 +32,31 @@ const ContactTemplate: FC<ContactTemplateProps> = (props) => {
 
   return (
     <MainLayout>
-      <div className="grid lg:grid-cols-2 gap-14">
-        <ContactSection
-          title={title}
-          content={content}
-          // fields={fields}
-          // defaultValues={defaultValues}
-          // onSubmit={handleSubmit}
-          // loading={state.loading}
-          // error={state.error}
-        />
-        <GravityForm
-          fields={fields}
-          defaultValues={defaultValues}
-          onSubmit={handleSubmit}
-          btnText="Send Message"
-          loadingText="Sending..."
-          loading={state.loading}
-          error={state.error}
-        />
-      </div>
+      <Section>
+        <div className="grid lg:grid-cols-2 gap-14">
+          <ContactSection
+            title={title}
+            content={content}
+            // fields={fields}
+            // defaultValues={defaultValues}
+            // onSubmit={handleSubmit}
+            // loading={state.loading}
+            // error={state.error}
+          />
+          <GravityForm
+            title={formTitle}
+            content={formContent}
+            fields={fields}
+            defaultValues={defaultValues}
+            onSubmit={handleSubmit}
+            btnText="Send Message"
+            loadingText="Sending..."
+            loading={state.loading}
+            error={state.error}
+            success={state.success}
+          />
+        </div>
+      </Section>
     </MainLayout>
   )
 }
