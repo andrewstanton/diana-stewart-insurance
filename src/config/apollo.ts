@@ -6,7 +6,7 @@ const apollo = registerApolloClient(
     new ApolloClient({
       cache: new InMemoryCache(),
       link: new HttpLink({
-        uri: process.env.NEXT_PUBLIC_WORDPRESS,
+        uri: `${process.env.NEXT_PUBLIC_WORDPRESS}/graphql`,
       }),
     })
 )

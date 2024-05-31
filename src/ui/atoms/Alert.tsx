@@ -14,7 +14,7 @@ const Hamburger: React.FC<AlertProps> = (props: AlertProps) => {
   return (
     <div
       className={cns(
-        "box-border p-6 text-sm border border-black h-fit text-white text-center",
+        "box-border p-6 text-sm border border-black border-red-500 h-fit text-black text-center",
         {
           [`${color}`]: color,
         }

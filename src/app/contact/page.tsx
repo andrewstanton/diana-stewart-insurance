@@ -3,6 +3,7 @@ import { NextPage } from "next"
 import getSEOQuery from "@/queries/getSEOQuery"
 import getContactQuery from "@/queries/getContactQuery"
 import getFormQuery from "@/queries/getFormQuery"
+import { getFormDefaultValues } from "@/lib/form"
 
 import { ContactTemplate } from "@/ui/templates"
 
@@ -19,16 +20,14 @@ const ContactPage: NextPage = async () => {
   const formData = await getFormQuery("1")
 
   const { title, content } = data
-  const { title: formTitle, fields } = formData
-
-  console.log(formTitle, fields)
+  const { fields } = formData
 
   return (
     <ContactTemplate
       title={title}
       content={content}
-      formTitle="Get In Touch With Diana"
-      formDescription="<p>Feel free to get in touch to fin out more information by filling out the fields below.</p>"
+      fields={fields}
+      defaultValues={getFormDefaultValues(formData)}
     />
   )
 }
