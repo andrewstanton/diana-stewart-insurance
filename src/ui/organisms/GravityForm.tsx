@@ -5,7 +5,7 @@ import styled from "styled-components"
 import { useForm } from "react-hook-form"
 // import ReCAPTCHA from "react-google-recaptcha"
 
-import { Button, Input, Alert, Form, Content } from "../atoms"
+import { Button, Input, Alert, Form, Content, Wrapper } from "../atoms"
 import { H2 } from "../atoms/Header"
 
 import {
@@ -177,42 +177,45 @@ const GravityForm: React.FC<GravityFormProps> = (props) => {
   })
 
   return (
-    <div className="flex items-center justify-center">
-      {success ? (
-        <Alert>
-          Thank you! We have received your message and will be in touch shortly.
-        </Alert>
-      ) : (
-        <Form onSubmit={handleSubmit(onHandleSubmit)}>
-          <H2>{title}</H2>
-          <Content>{content}</Content>
+    <Wrapper>
+      <div className="flex items-center justify-center mb-14">
+        {success ? (
+          <Alert>
+            Thank you! We have received your message and will be in touch
+            shortly.
+          </Alert>
+        ) : (
+          <Form onSubmit={handleSubmit(onHandleSubmit)}>
+            <H2>{title}</H2>
+            <Content>{content}</Content>
 
-          <div className="grid gap-6">
-            {fields.map((field) => renderField(field, { register, errors }))}
-          </div>
+            <div className="grid gap-6">
+              {fields.map((field) => renderField(field, { register, errors }))}
+            </div>
 
-          <ReCaptchaContainer>
-            {/* <ReCAPTCHA
+            <ReCaptchaContainer>
+              {/* <ReCAPTCHA
     sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_PUBLIC ?? ""}
     ref={captchaRef}
     grecaptcha={instance}
   /> */}
-          </ReCaptchaContainer>
+            </ReCaptchaContainer>
 
-          {(error || capError) && (
-            <ErrorContainer>
-              <Alert color="red">{error || capError}</Alert>
-            </ErrorContainer>
-          )}
+            {(error || capError) && (
+              <ErrorContainer>
+                <Alert color="red">{error || capError}</Alert>
+              </ErrorContainer>
+            )}
 
-          <ButtonContainer>
-            <Button type="submit" disabled={loading} fullWidth>
-              {loading ? loadingText : btnText}
-            </Button>
-          </ButtonContainer>
-        </Form>
-      )}
-    </div>
+            <ButtonContainer>
+              <Button type="submit" disabled={loading} fullWidth>
+                {loading ? loadingText : btnText}
+              </Button>
+            </ButtonContainer>
+          </Form>
+        )}
+      </div>
+    </Wrapper>
   )
 }
 

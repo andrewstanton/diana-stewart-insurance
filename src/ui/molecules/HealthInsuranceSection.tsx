@@ -1,7 +1,6 @@
 import React, { ReactNode, FC } from "react"
 
 import { Section, Content } from "../atoms"
-import ContactForm from "./ContactForm"
 import { H2 } from "../atoms/Header"
 
 // @types
@@ -11,12 +10,10 @@ export interface HealthInsuranceSectionProps {
   title: string
   children: ReactNode
   insurances: IInsuranceCompany[]
-  formTitle: string
-  formDescription: string
 }
 
 const HealthInsuranceSection: FC<HealthInsuranceSectionProps> = (props) => {
-  const { title, children, insurances, formTitle, formDescription } = props
+  const { title, children, insurances } = props
   return (
     <Section>
       <div className="grid">
@@ -30,7 +27,6 @@ const HealthInsuranceSection: FC<HealthInsuranceSectionProps> = (props) => {
           ))}
         </ul>
       </div>
-      <ContactForm title={formTitle} description={formDescription} />
     </Section>
   )
 }

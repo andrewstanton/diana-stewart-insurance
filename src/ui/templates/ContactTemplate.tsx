@@ -34,15 +34,7 @@ const ContactTemplate: FC<ContactTemplateProps> = (props) => {
     <MainLayout>
       <Section>
         <div className="grid lg:grid-cols-2 gap-14">
-          <ContactSection
-            title={title}
-            content={content}
-            // fields={fields}
-            // defaultValues={defaultValues}
-            // onSubmit={handleSubmit}
-            // loading={state.loading}
-            // error={state.error}
-          />
+          <ContactSection title={title} content={content} />
           <GravityForm
             title={formTitle}
             content={formContent}

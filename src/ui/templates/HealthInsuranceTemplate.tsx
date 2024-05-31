@@ -1,12 +1,16 @@
+"use client"
+
 import React, { FC, ReactNode } from "react"
 
-import { MainLayout } from "../organisms"
+import { MainLayout, GravityForm } from "../organisms"
 import { HealthInsuranceSection } from "../molecules"
+import useGravityForm from "../../../hooks/useGravityForm"
 
 // @types
 import { IInsuranceCompany } from "../molecules/HomeInsuranceCompanies"
+import { FormProps } from "./ContactTemplate"
 
-export interface HealthInsuranceTemplateProps {
+export interface HealthInsuranceTemplateProps extends FormProps {
   title: string
   content: ReactNode
   formTitle: string
@@ -15,18 +19,37 @@ export interface HealthInsuranceTemplateProps {
 }
 
 const HealthInsuranceTemplate: FC<HealthInsuranceTemplateProps> = (props) => {
-  const { title, content, formTitle, formDescription, insurances } = props
+  const {
+    title,
+    content,
+    formTitle,
+    formDescription,
+    insurances,
+    fields,
+    defaultValues,
+  } = props
+
+  const [state, handleSubmit] = useGravityForm({
+    id: "1",
+  })
 
   return (
     <MainLayout>
-      <HealthInsuranceSection
-        title={title}
-        formTitle={formTitle}
-        formDescription={formDescription}
-        insurances={insurances}
-      >
+      <HealthInsuranceSection title={title} insurances={insurances}>
         {content}
       </HealthInsuranceSection>
+      <GravityForm
+        title={formTitle}
+        content={formDescription}
+        fields={fields}
+        defaultValues={defaultValues}
+        onSubmit={handleSubmit}
+        btnText="Send Message"
+        loadingText="Sending..."
+        loading={state.loading}
+        error={state.error}
+        success={state.success}
+      />
     </MainLayout>
   )
 }
