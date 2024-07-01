@@ -1,7 +1,7 @@
 import { ReactNode } from "react"
 
 import { nav } from "@/config/meta"
-import { Footer } from "../molecules"
+import Footer from "../molecules/Footer"
 import MainHeader from "./MainHeader"
 
 export interface MainLayoutProps {

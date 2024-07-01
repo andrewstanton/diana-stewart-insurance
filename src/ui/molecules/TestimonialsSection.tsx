@@ -2,10 +2,11 @@
 
 import { FC, ReactNode } from "react"
 
-import { Content, Section, Testimony } from "@/ui/atoms"
+import { Button, Content, Section, Testimony } from "@/ui/atoms"
 import { H1 } from "@/ui/atoms/Header"
 
 // @types
+import Link from "next/link"
 import { IClientTestimony } from "../atoms/Testimony"
 
 export interface TestimonialsSectionProps {
@@ -23,6 +24,12 @@ const TestimonialsSection: FC<TestimonialsSectionProps> = (props) => {
         <H1>{title}</H1>
       </div>
       <Content>{children}</Content>
+
+      <div className="my-8 text-center">
+        <Link href="/testimonials/write">
+          <Button>Write Your Testimonial</Button>
+        </Link>
+      </div>
       <ul className="grid md:grid-cols-2 gap-12 place-items-start mt-20">
         {testimonies.map((testimony) => (
           <Testimony

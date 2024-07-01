@@ -30,7 +30,7 @@ const ContactPage: NextPage = async () => {
       title={title}
       content={content}
       formTitle="Get In Touch With Diana"
-      formContent="<p>Feel free to get in touch to fin out more information by filling out the fields below.</p>"
+      formContent="Feel free to get in touch to fin out more information by filling out the fields below."
       fields={fields}
       defaultValues={getFormDefaultValues(formData)}
       {...getDefaultProps(config)}

@@ -1,13 +1,12 @@
 import { MutableRefObject } from "react"
-import ReCAPTCHA from "react-google-recaptcha"
 
-import {
-  IFormFieldInput,
-  IFormField,
-  IFormData,
-  FormFieldTypeEnum,
-} from "../../interfaces/gravity"
 import { ISelectOption } from "../../interfaces/form"
+import {
+  FormFieldTypeEnum,
+  IFormData,
+  IFormField,
+  IFormFieldInput,
+} from "../../interfaces/gravity"
 
 interface IDefaultGravityValue {
   [key: string]: string
@@ -82,7 +81,7 @@ export const getFormDefaultValues = (data: IFormData): IDefaultGravityValue => {
 /**
  * Recaptcha Error
  */
-export const recaptchaCheck = (ref: MutableRefObject<ReCAPTCHA | null>) => {
+export const recaptchaCheck = (ref: MutableRefObject<null>) => {
   if (!ref.current) throw new Error("Recaptcha was not complete")
   const captcha = (ref.current as any).getValue()
 

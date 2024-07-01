@@ -31,7 +31,7 @@ const getTestimonialsQuery = async () => {
         }
       }
     `,
-    fetchPolicy: "cache-first",
+    fetchPolicy: "network-only",
   })
 
   const { page, customerReferrals } = data
