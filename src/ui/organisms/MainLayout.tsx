@@ -6,16 +6,19 @@ import MainHeader from "./MainHeader"
 
 export interface MainLayoutProps {
   children?: ReactNode
+  phone: string
+  email: string
+  facebook: string | null
 }
 
 const MainLayout: React.FC<MainLayoutProps> = (props: MainLayoutProps) => {
-  const { children } = props
+  const { children, phone, email, facebook } = props
 
   return (
     <div>
-      <MainHeader items={nav} />
+      <MainHeader items={nav} phone={phone} email={email} />
       <main>{children}</main>
-      <Footer />
+      <Footer phone={phone} email={email} facebook={facebook} />
     </div>
   )
 }

@@ -2,7 +2,14 @@ import { gql } from "@apollo/client"
 
 import apollo from "../config/apollo"
 
-const getConfigQuery = async () => {
+export interface IConfigData {
+  companyName: string | null
+  companyEmail: string | null
+  companyPhone: string | null
+  facebook: string | null
+}
+
+const getConfigQuery = async (): Promise<IConfigData> => {
   const { data } = await apollo.getClient().query({
     query: gql`
       query getConfigQuery {
@@ -13,6 +20,7 @@ const getConfigQuery = async () => {
                 companyName
                 companyEmail
                 companyPhone
+                facebook
               }
             }
           }
@@ -25,12 +33,13 @@ const getConfigQuery = async () => {
   const { allConfig } = data
   const content = allConfig.edges[0].node.dianaStewartConfig
 
-  const { companyName, companyEmail, companyPhone } = content
+  const { companyName, companyEmail, companyPhone, facebook } = content
 
   return {
     companyName,
     companyEmail,
     companyPhone,
+    facebook,
   }
 }
 

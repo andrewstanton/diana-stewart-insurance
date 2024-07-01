@@ -1,16 +1,19 @@
 "use client"
 
-import React, { FC, ReactNode } from "react"
+import { FC, ReactNode } from "react"
 
-import { MainLayout, GravityForm } from "../organisms"
-import { HealthInsuranceSection } from "../molecules"
 import useGravityForm from "../../../hooks/useGravityForm"
+import { HealthInsuranceSection } from "../molecules"
+import { GravityForm, MainLayout } from "../organisms"
 
 // @types
 import { IInsuranceCompany } from "../molecules/HomeInsuranceCompanies"
 import { FormProps } from "./ContactTemplate"
+import { DefaultTemplateProps } from "./HomeTemplate"
 
-export interface HealthInsuranceTemplateProps extends FormProps {
+export interface HealthInsuranceTemplateProps
+  extends FormProps,
+    DefaultTemplateProps {
   title: string
   content: ReactNode
   formTitle: string
@@ -27,6 +30,9 @@ const HealthInsuranceTemplate: FC<HealthInsuranceTemplateProps> = (props) => {
     insurances,
     fields,
     defaultValues,
+    email,
+    phone,
+    facebook,
   } = props
 
   const [state, handleSubmit] = useGravityForm({
@@ -34,7 +40,7 @@ const HealthInsuranceTemplate: FC<HealthInsuranceTemplateProps> = (props) => {
   })
 
   return (
-    <MainLayout>
+    <MainLayout phone={phone} email={email} facebook={facebook}>
       <HealthInsuranceSection title={title} insurances={insurances}>
         {content}
       </HealthInsuranceSection>

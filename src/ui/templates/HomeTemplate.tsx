@@ -1,18 +1,24 @@
-import React, { FC, ReactNode } from "react"
+import { FC, ReactNode } from "react"
 
-import { MainLayout } from "../organisms"
 import {
-  HomeSection,
   Banner,
-  HomeInsuranceCompanies,
   HomeClients,
+  HomeInsuranceCompanies,
+  HomeSection,
 } from "../molecules"
+import { MainLayout } from "../organisms"
 
 // @types
-import { IInsuranceCompany } from "../molecules/HomeInsuranceCompanies"
 import { IClientTestimony } from "../atoms/Testimony"
+import { IInsuranceCompany } from "../molecules/HomeInsuranceCompanies"
 
-export interface HomeTemplateProps {
+export interface DefaultTemplateProps {
+  phone: string
+  email: string
+  facebook: string | null
+}
+
+export interface HomeTemplateProps extends DefaultTemplateProps {
   title: string
   content: ReactNode
   bannerImg: string
@@ -21,10 +27,19 @@ export interface HomeTemplateProps {
 }
 
 const HomeTemplate: FC<HomeTemplateProps> = (props) => {
-  const { title, content, bannerImg, insurances, testimonials } = props
+  const {
+    title,
+    content,
+    bannerImg,
+    insurances,
+    testimonials,
+    phone,
+    email,
+    facebook,
+  } = props
 
   return (
-    <MainLayout>
+    <MainLayout phone={phone} email={email} facebook={facebook}>
       <Banner img={bannerImg} />
       <HomeSection title={title}>{content}</HomeSection>
       <HomeInsuranceCompanies insurances={insurances} />

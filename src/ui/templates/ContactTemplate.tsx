@@ -1,21 +1,22 @@
 "use client"
 
-import React, { FC, ReactNode } from "react"
+import { FC, ReactNode } from "react"
 
-import { MainLayout, GravityForm } from "../organisms"
-import { ContactSection } from "../molecules"
-import { Section } from "../atoms"
 import useGravityForm from "../../../hooks/useGravityForm"
+import { Section } from "../atoms"
+import { ContactSection } from "../molecules"
+import { GravityForm, MainLayout } from "../organisms"
 
 // @types
 import { IFormField } from "../../../interfaces/gravity"
+import { DefaultTemplateProps } from "./HomeTemplate"
 
 export interface FormProps {
   fields: IFormField[]
   defaultValues: unknown
 }
 
-export interface ContactTemplateProps extends FormProps {
+export interface ContactTemplateProps extends FormProps, DefaultTemplateProps {
   title: string
   content: ReactNode
   formTitle: string
@@ -23,15 +24,24 @@ export interface ContactTemplateProps extends FormProps {
 }
 
 const ContactTemplate: FC<ContactTemplateProps> = (props) => {
-  const { title, content, fields, defaultValues, formTitle, formContent } =
-    props
+  const {
+    title,
+    content,
+    fields,
+    defaultValues,
+    formTitle,
+    formContent,
+    email,
+    phone,
+    facebook,
+  } = props
 
   const [state, handleSubmit] = useGravityForm({
     id: "1",
   })
 
   return (
-    <MainLayout>
+    <MainLayout phone={phone} email={email} facebook={facebook}>
       <Section>
         <div className="grid lg:grid-cols-2 gap-14">
           <ContactSection title={title} content={content} />

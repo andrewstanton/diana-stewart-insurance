@@ -1,11 +1,13 @@
 import { NextPage } from "next"
 
-import getSEOQuery from "@/queries/getSEOQuery"
-import getInsuranceQuery from "@/queries/getInsuranceQuery"
-import getFormQuery from "@/queries/getFormQuert"
 import { getFormDefaultValues } from "@/lib/form"
+import getFormQuery from "@/queries/getFormQuert"
+import getInsuranceQuery from "@/queries/getInsuranceQuery"
+import getSEOQuery from "@/queries/getSEOQuery"
 
+import getConfigQuery from "@/queries/getConfigQuery"
 import { HealthInsuranceTemplate } from "@/ui/templates"
+import { getDefaultProps } from "../page"
 
 export async function generateMetadata() {
   const data = await getSEOQuery("cG9zdDoxNQ==")
@@ -18,6 +20,7 @@ export async function generateMetadata() {
 const HealthInsurancePage: NextPage = async () => {
   const data = await getInsuranceQuery()
   const formData = await getFormQuery("1")
+  const config = await getConfigQuery()
 
   const { title, content, insurances } = data
   const { fields } = formData
@@ -31,6 +34,7 @@ const HealthInsurancePage: NextPage = async () => {
       insurances={insurances}
       fields={fields}
       defaultValues={getFormDefaultValues(formData)}
+      {...getDefaultProps(config)}
     />
   )
 }

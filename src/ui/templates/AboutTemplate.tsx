@@ -1,14 +1,15 @@
 "use client"
 
-import React, { FC, ReactNode } from "react"
+import { FC, ReactNode } from "react"
 
-import { MainLayout, GravityForm } from "../organisms"
-import { AboutSection } from "../molecules"
 import useGravityForm from "../../../hooks/useGravityForm"
+import { AboutSection } from "../molecules"
+import { GravityForm, MainLayout } from "../organisms"
 
 import { FormProps } from "./ContactTemplate"
+import { DefaultTemplateProps } from "./HomeTemplate"
 
-export interface AboutTemplateProps extends FormProps {
+export interface AboutTemplateProps extends FormProps, DefaultTemplateProps {
   title: string
   content: ReactNode
   img: string
@@ -25,6 +26,9 @@ const AboutTemplate: FC<AboutTemplateProps> = (props) => {
     formDescription,
     fields,
     defaultValues,
+    email,
+    phone,
+    facebook,
   } = props
 
   const [state, handleSubmit] = useGravityForm({
@@ -32,7 +36,7 @@ const AboutTemplate: FC<AboutTemplateProps> = (props) => {
   })
 
   return (
-    <MainLayout>
+    <MainLayout phone={phone} email={email} facebook={facebook}>
       <AboutSection title={title} img={img}>
         {content}
       </AboutSection>

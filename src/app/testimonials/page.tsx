@@ -1,10 +1,12 @@
 import { NextPage } from "next"
 
+import getClientTestimonies from "@/lib/common"
 import getSEOQuery from "@/queries/getSEOQuery"
 import getTestimonialsQuery from "@/queries/getTestimonialsQuery"
-import getClientTestimonies from "@/lib/common"
 
+import getConfigQuery from "@/queries/getConfigQuery"
 import { TestimonialsTemplate } from "@/ui/templates"
+import { getDefaultProps } from "../page"
 
 export async function generateMetadata() {
   const data = await getSEOQuery("cG9zdDoxMTY=")
@@ -16,6 +18,7 @@ export async function generateMetadata() {
 
 const TestimonialsPage: NextPage = async () => {
   const data = await getTestimonialsQuery()
+  const config = await getConfigQuery()
   const { title, content, testimonials } = data
 
   return (
@@ -23,6 +26,7 @@ const TestimonialsPage: NextPage = async () => {
       title={title}
       content={content}
       testimonials={getClientTestimonies(testimonials)}
+      {...getDefaultProps(config)}
     />
   )
 }

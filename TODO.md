@@ -1,2 +1,0 @@
-## Fixes
-- [ ] Testimony bottom border

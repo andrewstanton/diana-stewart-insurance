@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useRef } from "react"
+import { useRef, useState } from "react"
 
 import { INavItem } from "@/config/meta"
 import { Drawer, Header } from "../molecules"
@@ -9,10 +9,12 @@ import { Drawer, Header } from "../molecules"
 
 export interface MainHeaderProps {
   items: INavItem[]
+  phone: string
+  email: string
 }
 
 const MainHeader: React.FC<MainHeaderProps> = (props: MainHeaderProps) => {
-  const { items } = props
+  const { items, phone, email } = props
   const [isOpen, setOpenState] = useState(false)
   const drawerRef = useRef(null)
 
@@ -29,8 +31,8 @@ const MainHeader: React.FC<MainHeaderProps> = (props: MainHeaderProps) => {
         onClose={() => setOpenState(false)}
       />
       <Header
-        phone="419-290-0145"
-        email="demo@gmail.com"
+        phone={phone}
+        email={email}
         isOpen={isOpen}
         onHamburgerClick={toggleOpen}
       />

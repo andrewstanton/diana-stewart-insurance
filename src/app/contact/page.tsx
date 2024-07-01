@@ -1,11 +1,13 @@
 import { NextPage } from "next"
 
-import getSEOQuery from "@/queries/getSEOQuery"
+import { getFormDefaultValues } from "@/lib/form"
 import getContactQuery from "@/queries/getContactQuery"
 import getFormQuery from "@/queries/getFormQuery"
-import { getFormDefaultValues } from "@/lib/form"
+import getSEOQuery from "@/queries/getSEOQuery"
 
+import getConfigQuery from "@/queries/getConfigQuery"
 import { ContactTemplate } from "@/ui/templates"
+import { getDefaultProps } from "../page"
 
 export async function generateMetadata() {
   const data = await getSEOQuery("cG9zdDoyMA==")
@@ -18,6 +20,7 @@ export async function generateMetadata() {
 const ContactPage: NextPage = async () => {
   const data = await getContactQuery()
   const formData = await getFormQuery("1")
+  const config = await getConfigQuery()
 
   const { title, content } = data
   const { fields } = formData
@@ -30,6 +33,7 @@ const ContactPage: NextPage = async () => {
       formContent="<p>Feel free to get in touch to fin out more information by filling out the fields below.</p>"
       fields={fields}
       defaultValues={getFormDefaultValues(formData)}
+      {...getDefaultProps(config)}
     />
   )
 }

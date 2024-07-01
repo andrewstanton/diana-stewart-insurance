@@ -1,11 +1,13 @@
 import { NextPage } from "next"
 
-import getSEOQuery from "@/queries/getSEOQuery"
+import { getFormDefaultValues } from "@/lib/form"
 import getAboutQuery from "@/queries/getAboutQuery"
 import getFormQuery from "@/queries/getFormQuery"
-import { getFormDefaultValues } from "@/lib/form"
+import getSEOQuery from "@/queries/getSEOQuery"
 
+import getConfigQuery from "@/queries/getConfigQuery"
 import { AboutTemplate } from "@/ui/templates"
+import { getDefaultProps } from "../page"
 
 export async function generateMetadata() {
   const data = await getSEOQuery("cG9zdDoxMw==")
@@ -18,6 +20,7 @@ export async function generateMetadata() {
 const AboutPage: NextPage = async () => {
   const data = await getAboutQuery()
   const formData = await getFormQuery("1")
+  const config = await getConfigQuery()
 
   const { title, content, featuredImage } = data
   const { fields } = formData
@@ -31,6 +34,7 @@ const AboutPage: NextPage = async () => {
       formDescription="<p>Feel free to get in touch to fin out more information by filling out the fields below.</p>"
       fields={fields}
       defaultValues={getFormDefaultValues(formData)}
+      {...getDefaultProps(config)}
     />
   )
 }
