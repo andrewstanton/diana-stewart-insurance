@@ -1,26 +1,23 @@
 "use client"
 
-import React, { ReactNode, FC } from "react"
+import { FC, ReactNode } from "react"
 
-import { Section, Content } from "../atoms"
-// import { GravityForm } from "../organisms"
+import formatPhone, { cleanPhone } from "@/lib/phone"
+import { Content, Section } from "../atoms"
 import { H2 } from "../atoms/Header"
-
-// @types
-// import { IFormField } from "../../../interfaces/gravity"
 
 export interface ContactSectionProps {
   title: string
   content: ReactNode
+  phone: string
 }
 
 const ContactSection: FC<ContactSectionProps> = (props) => {
-  const { title, content } = props
+  const { title, content, phone } = props
 
   const anchorStyles = "text-green-500 font-bold hover:underline"
   return (
     <Section>
-      {/* <div className="grid lg:grid-cols-2 gap-14"> */}
       <div>
         <div className="text-center">
           <H2>{title}</H2>
@@ -37,21 +34,11 @@ const ContactSection: FC<ContactSectionProps> = (props) => {
         </p>
         <p>
           <strong>Phone: </strong>
-          <a className={anchorStyles} href="tel:4198704185">
-            (419) 870-4185
+          <a className={anchorStyles} href={`tel:${cleanPhone(phone)}`}>
+            {formatPhone(phone)}
           </a>
         </p>
       </div>
-      {/* <GravityForm
-          fields={fields}
-          defaultValues={defaultValues}
-          onSubmit={onSubmit}
-          btnText="Send Message"
-          loadingText="Sending..."
-          loading={loading}
-          error={error}
-        /> */}
-      {/* </div> */}
     </Section>
   )
 }

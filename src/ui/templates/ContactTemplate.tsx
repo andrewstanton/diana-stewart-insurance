@@ -44,7 +44,7 @@ const ContactTemplate: FC<ContactTemplateProps> = (props) => {
     <MainLayout phone={phone} email={email} facebook={facebook}>
       <Section>
         <div className="grid lg:grid-cols-2 gap-14">
-          <ContactSection title={title} content={content} />
+          <ContactSection title={title} content={content} phone={phone} />
           <GravityForm
             title={formTitle}
             content={formContent}
