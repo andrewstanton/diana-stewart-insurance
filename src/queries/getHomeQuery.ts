@@ -47,7 +47,9 @@ const getHomeQuery = async () => {
             }
           }
         }
-        insuranceSections {
+        insuranceSections(
+          where: { orderby: { field: MENU_ORDER, order: ASC } }
+        ) {
           edges {
             node {
               id
