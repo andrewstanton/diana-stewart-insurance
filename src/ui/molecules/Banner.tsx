@@ -21,14 +21,14 @@ const Banner: React.FC<HeroProps> = (props: HeroProps) => {
           }}
         />
         <Wrapper maxWidth={1300}>
-          <div className="relative h-full sm:max-w-[450px] py-8 flex flex-col items-center text-center sm:text-left sm:items-start justify-center gap-6 text-black z-30">
-            <h1 className="text-4xl m-0 leading-10">
-              Choosing Health Insurance Feels Like You
+          <div className="relative h-full sm:max-w-[600px] py-8 flex flex-col items-center text-center sm:text-left sm:items-start justify-center gap-6 text-black z-30">
+            <h1 className="text-3xl m-0 leading-10 mb-0">
+              Does Choosing Medicare Health Insurance Feels Like You Are{" "}
+              <strong>Drowning</strong>?
             </h1>
-            <h2 className="text-5xl font-bold m-0 leading-3">
-              Are <span className="text-green-600">Drowning</span>
+            <h2 className="text-5xl mb-4 font-bold m-0 leading-12">
+              <span className="text-green-600">I Can Keep You Afloat!</span>
             </h2>
-            <p className="text-2xl p-0 m-0">I Can Keep You Afloat!</p>
             <Link href="/contact">
               <Button>Contact Diana Now</Button>
             </Link>

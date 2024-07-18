@@ -15,7 +15,9 @@ const getInsuranceQuery = async () => {
             metaDesc
           }
         }
-        insuranceSections {
+        insuranceSections(
+          where: { orderby: { field: MENU_ORDER, order: ASC } }
+        ) {
           edges {
             node {
               id
