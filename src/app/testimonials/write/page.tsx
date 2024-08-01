@@ -9,7 +9,7 @@ import getConfigQuery from "@/queries/getConfigQuery"
 import getFormQuery from "@/queries/getFormQuery"
 
 import { getFormDefaultValues } from "@/lib/form"
-import { getDefaultProps } from "../../page"
+import { getDefaultProps } from "@/lib/pageServices"
 
 export async function generateMetadata() {
   const data = await getSEOQuery("cG9zdDoxNjk=")

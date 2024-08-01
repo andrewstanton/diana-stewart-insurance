@@ -7,7 +7,7 @@ import getSEOQuery from "@/queries/getSEOQuery"
 
 import getConfigQuery from "@/queries/getConfigQuery"
 import { AboutTemplate } from "@/ui/templates"
-import { getDefaultProps } from "../page"
+import { getDefaultProps } from "@/lib/pageServices"
 
 export async function generateMetadata() {
   const data = await getSEOQuery("cG9zdDoxMw==")

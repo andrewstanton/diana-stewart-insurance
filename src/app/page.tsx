@@ -1,12 +1,12 @@
 import { NextPage } from "next"
 
 import getClientTestimonies from "@/lib/common"
-import getConfigQuery, { IConfigData } from "@/queries/getConfigQuery"
+import getConfigQuery from "@/queries/getConfigQuery"
 import getHomeQuery from "@/queries/getHomeQuery"
 import getSEOQuery from "@/queries/getSEOQuery"
 
 import { HomeTemplate } from "@/ui/templates"
-import { DefaultTemplateProps } from "@/ui/templates/HomeTemplate"
+import { getDefaultProps } from "@/lib/pageServices"
 
 export async function generateMetadata() {
   const data = await getSEOQuery("cG9zdDo3")
@@ -15,12 +15,6 @@ export async function generateMetadata() {
     description: data.seoDescription,
   }
 }
-
-export const getDefaultProps = (data: IConfigData): DefaultTemplateProps => ({
-  phone: data.companyPhone ?? "",
-  email: data.companyEmail ?? "",
-  facebook: data.facebook,
-})
 
 const HomePage: NextPage = async () => {
   const data = await getHomeQuery()

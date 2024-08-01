@@ -6,7 +6,7 @@ import getTestimonialsQuery from "@/queries/getTestimonialsQuery"
 
 import getConfigQuery from "@/queries/getConfigQuery"
 import { TestimonialsTemplate } from "@/ui/templates"
-import { getDefaultProps } from "../page"
+import { getDefaultProps } from "@/lib/pageServices"
 
 export async function generateMetadata() {
   const data = await getSEOQuery("cG9zdDoxMTY=")
