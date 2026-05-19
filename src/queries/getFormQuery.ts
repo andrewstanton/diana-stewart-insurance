@@ -13,6 +13,7 @@ const getFormQuery = async (id: string) => {
             edges {
               node {
                 id
+                databaseId
                 type
                 ... on NameField {
                   label
@@ -116,7 +117,7 @@ const getFormQuery = async (id: string) => {
   const fields =
     formFields && formFields.edges
       ? formFields.edges.map((field: any) => ({
-          id: field.node.id,
+          id: field.node.databaseId,
           type: field.node.type,
           label: field.node?.label ?? null,
           isRequired: field.node?.isRequired ?? false,
